@@ -8,6 +8,7 @@ import Shop from './routes/shop/shop.component';
 import Checkout from './routes/checkout/checkout.component';
 
 import { setCurrentUser } from './store/user/user.action';
+import { getCurrentUser } from './utils/firebase/firebase.utils';
 
 import { 
     onAuthStateChangedListerner, 
@@ -18,15 +19,15 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const unsuscribe = onAuthStateChangedListerner((user) => {
-            if (user) {
-                createUserDocumentFromAuth(user);
+        const getUser = async () => {
+            try {
+                const user = await getCurrentUser();
+                console.log({user});
+            } catch (error) {
+                console.error(error);
             }
-
-            dispatch(setCurrentUser(user));
-        }) ;
-
-        return unsuscribe;
+        };
+        getUser();
     }, []);
 
     return (

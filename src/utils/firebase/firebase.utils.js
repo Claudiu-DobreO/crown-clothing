@@ -24,12 +24,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAUAhU-dlDIxarRL4RdK1BANjkcRCbH4n0",
-  authDomain: "crown-clothing-db-29b63.firebaseapp.com",
-  projectId: "crown-clothing-db-29b63",
-  storageBucket: "crown-clothing-db-29b63.firebasestorage.app",
-  messagingSenderId: "992486162205",
-  appId: "1:992486162205:web:2da92b40ecbd1ce32e2bf4"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID
 };
 
 // Initialize Firebase
@@ -112,3 +112,17 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListerner = (callback) => onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+	return new Promise((resolve, reject) => {
+		const unsubscribe = onAuthStateChanged(
+			auth, 
+			(userAuth) => {
+				unsubscribe();
+				resolve(userAuth);
+			}, 
+			reject
+		);
+		return unsubscribe;
+	});
+};
