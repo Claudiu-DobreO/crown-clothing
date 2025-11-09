@@ -32,7 +32,9 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
-console.log({firebaseConfig});
+console.log('🔥 Firebase Config:', firebaseConfig);
+console.log('🔑 API Key:', process.env.REACT_APP_FIREBASE_API_KEY);
+console.log('📦 All REACT_APP vars:', Object.keys(process.env).filter(key => key.startsWith('REACT_APP_')));
 
 // Initialize Firebase
 // eslint-disable-next-line
@@ -77,7 +79,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 	const userDocRef = doc(db, 'users', userAuth.uid);
 
 	console.log(userDocRef);
-	const userSnapshot = await getDoc(userDocRef);
+	let userSnapshot = await getDoc(userDocRef);
 	console.log(userSnapshot);
 
 	if (!userSnapshot.exists()) {
@@ -91,12 +93,14 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 				createdAt,
 				...additionalInformation,
 			});
+			// Fetch the newly created document snapshot
+			userSnapshot = await getDoc(userDocRef);
 		} catch (error) {
 			console.log('error creating the user', error.message);
 		}
 	} 
 
-	return userDocRef;
+	return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
