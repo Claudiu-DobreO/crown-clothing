@@ -15,7 +15,7 @@ const App = () => {
     useEffect(() => {
         const action = checkUserSession();
         dispatch(action);
-    }, []);
+    }, [dispatch]);
 
     return (
         <Routes>
