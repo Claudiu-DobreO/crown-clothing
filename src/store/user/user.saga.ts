@@ -1,4 +1,4 @@
-import { takeLatest, all, call, put } from 'typed-redux-saga';
+import { takeLatest, all, call, put } from 'typed-redux-saga/macro';
 import { USER_ACTION_TYPES } from './user.types';
 import { 
     signInSuccess, 

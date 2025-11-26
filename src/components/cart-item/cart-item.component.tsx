@@ -1,6 +1,11 @@
+import { CartItem as CartItemType } from '../../store/cart/cart.types';
 import './cart-item.styles.scss';
 
-const CartItem = ({ cartItem }) => {
+type CartItemProps = {
+	cartItem: CartItemType;
+}
+
+const CartItem = ({ cartItem }: CartItemProps) => {
 	const { name, imageUrl, quantity, price } = cartItem;
 
 	return (

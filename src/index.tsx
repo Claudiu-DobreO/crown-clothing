@@ -35,10 +35,12 @@ try {
   console.log('✅ App rendered successfully');
 } catch (error) {
   console.error('❌ Error rendering app:', error);
+  const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+  const errorStack = error instanceof Error ? error.stack : String(error);
   rootElement.innerHTML = `<div style="padding: 20px; color: red;">
     <h1>Error loading app</h1>
-    <p>${error.message}</p>
-    <pre>${error.stack}</pre>
+    <p>${errorMessage}</p>
+    <pre>${errorStack}</pre>
   </div>`;
 }
 

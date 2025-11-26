@@ -8,7 +8,7 @@ import { selectIsCartOpen } from '../../store/cart/cart.selector';
 
 import { signOutStart } from '../../store/user/user.action';
 
-import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './navigation.styles.jsx';
+import { NavigationContainer, LogoContainer, NavLinks, NavLink, NavLinkSpan } from './navigation.styles';
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -29,9 +29,9 @@ const Navigation = () => {
                     </NavLink>
 
                     {currentUser ? (
-                        <NavLink as='span' onClick={signOutUser}>
+                        <NavLinkSpan onClick={signOutUser}>
                             SIGN OUT
-                        </NavLink>
+                        </NavLinkSpan>
                     ) : (
                         <NavLink to='/auth'>
                             SIGN IN

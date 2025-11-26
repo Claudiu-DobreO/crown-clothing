@@ -8,7 +8,6 @@ import { CartDropdownContainer, EmptyMessage, CartItems } from './cart-dropdown.
 
 const CartDropdown = () => {
 	const cartItems = useSelector(selectCartItems);
-	console.log("Cart Items: ", cartItems);
 	const navigate = useNavigate();
 
 	const goToCheckoutHandler = () => {
