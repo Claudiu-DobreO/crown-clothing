@@ -7,9 +7,29 @@
 	font-size: 20px; 
 	align-items: center; 
 
+	@media screen and (max-width: 800px) {
+		font-size: 16px;
+		min-height: 80px;
+		padding: 10px 0;
+	}
+
+	@media screen and (max-width: 500px) {
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: auto;
+		padding: 15px 0;
+		font-size: 14px;
+	}
+
 	.image-container { 
 		width: 23%; 
 		padding-right: 15px; 
+
+		@media screen and (max-width: 500px) {
+			width: 100%;
+			padding-right: 0;
+			margin-bottom: 10px;
+		}
 
 		img { 
 			width: 100%; 
@@ -19,10 +39,28 @@
 
 	.name, .quantity, .price { 
 		width: 23%; 
+
+		@media screen and (max-width: 500px) {
+			width: 100%;
+			margin-bottom: 8px;
+		}
 	} 
+
+	.name {
+		@media screen and (max-width: 500px) {
+			font-weight: bold;
+			font-size: 16px;
+		}
+	}
 
 	.quantity { 
 		display: flex; 
+		align-items: center;
+
+		@media screen and (max-width: 500px) {
+			justify-content: space-between;
+			width: 100%;
+		}
 
 		.arrow { 
 			cursor: pointer; 
@@ -30,11 +68,27 @@
 
 		.value { 
 			margin: 0 10px; 
+
+			@media screen and (max-width: 500px) {
+				margin: 0 15px;
+			}
 		} 
 	} 
+
+	.price {
+		@media screen and (max-width: 500px) {
+			font-weight: bold;
+		}
+	}
 
 	.remove-button { 
 		padding-left: 12px; 
 		cursor: pointer; 
+
+		@media screen and (max-width: 500px) {
+			padding-left: 0;
+			margin-top: 10px;
+			align-self: flex-end;
+		}
 	} 
 }

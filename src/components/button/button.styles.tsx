@@ -21,6 +21,22 @@ export const BaseButton = styled.button`
 	align-items: center;
 	white-space: nowrap;
 
+	@media screen and (max-width: 800px) {
+		min-width: 140px;
+		height: 45px;
+		line-height: 45px;
+		padding: 0 25px;
+		font-size: 14px;
+	}
+
+	@media screen and (max-width: 500px) {
+		min-width: 120px;
+		height: 40px;
+		line-height: 40px;
+		padding: 0 20px;
+		font-size: 12px;
+	}
+
 	&:hover { 
 		background-color: white; 
 		color: black; 

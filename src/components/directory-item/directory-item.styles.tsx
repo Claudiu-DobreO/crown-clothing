@@ -24,17 +24,43 @@ export const Body = styled.div`
 	opacity: 0.7; 
 	position: absolute; 
 
+	@media screen and (max-width: 800px) {
+		height: 70px;
+		padding: 0 15px;
+	}
+
+	@media screen and (max-width: 500px) {
+		height: 60px;
+		padding: 0 10px;
+	}
+
 	h2 { 
 		font-weight: bold; 
 		margin: 0 6px 0; 
 		font-size: 22px; 
 		color: #4a4a4a; 
 		text-transform: uppercase;
+
+		@media screen and (max-width: 800px) {
+			font-size: 18px;
+		}
+
+		@media screen and (max-width: 500px) {
+			font-size: 16px;
+		}
 	} 
 
 	p { 
 		font-weight: lighter; 
 		font-size: 16px; 
+
+		@media screen and (max-width: 800px) {
+			font-size: 14px;
+		}
+
+		@media screen and (max-width: 500px) {
+			font-size: 12px;
+		}
 	} 
 `
 
@@ -48,6 +74,17 @@ export const DirectoryItemContainer = styled.div`
 	border: 1px solid black; 
 	margin: 0 7.5px 15px; 
 	overflow: hidden; 
+
+	@media screen and (max-width: 800px) {
+		height: 200px;
+		margin: 0 5px 10px;
+	}
+
+	@media screen and (max-width: 500px) {
+		min-width: 100%;
+		height: 180px;
+		margin: 0 0 10px;
+	}
 
 	&:hover { 
 		cursor: pointer; 
@@ -64,10 +101,18 @@ export const DirectoryItemContainer = styled.div`
 
 	&:first-child { 
 		margin-right: 7.5px; 
+
+		@media screen and (max-width: 500px) {
+			margin-right: 0;
+		}
 	} 
 
 	&:last-child { 
 		margin-left: 7.5px; 
+
+		@media screen and (max-width: 500px) {
+			margin-left: 0;
+		}
 	} 
 `
 

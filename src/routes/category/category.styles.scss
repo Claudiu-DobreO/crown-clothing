@@ -3,10 +3,31 @@
 	grid-template-columns: repeat(4, 1fr);
 	column-gap: 20px;
 	row-gap: 50px;
+
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 30px;
+		column-gap: 15px;
+	}
+
+	@media screen and (max-width: 500px) {
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+		column-gap: 0;
+	}
 }
 
 .category-title {
 	font-size: 38px;
 	margin-bottom: 25px;
 	text-align: center;
+
+	@media screen and (max-width: 800px) {
+		font-size: 28px;
+		margin-bottom: 15px;
+	}
+
+	@media screen and (max-width: 500px) {
+		font-size: 24px;
+	}
 }
