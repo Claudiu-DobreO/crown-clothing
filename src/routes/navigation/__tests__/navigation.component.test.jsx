@@ -1,8 +1,16 @@
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { renderWithProviders } from '../../../utils/test/test.utils';
+import { vi } from 'vitest';
+import { createStore } from 'redux';
+import { rootReducer } from '../../../store/root-reducer';
+import { signOutStart } from '../../../store/user/user.action';
 import Navigation from '../navigation.component';
 
 describe('Navigation component tests', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('should render a sign in link and not sign out link if there is no current user', () => {
     renderWithProviders(<Navigation />, {
         preloadedState: {
@@ -60,5 +68,27 @@ describe('Navigation component tests', () => {
 
     const dropdownTextElement = screen.getByText(/your cart is empty/i);
     expect(dropdownTextElement).toBeInTheDocument();
+  });
+
+  it('should dispatch sign out action when sign out link is clicked', async () => {
+    const store = createStore(rootReducer, {
+        user: {
+            currentUser: {},
+        },
+    });
+    const dispatchSpy = vi.spyOn(store, 'dispatch');
+
+    renderWithProviders(<Navigation />, {
+        store,
+    });
+
+    const signOutLink = screen.getByText(/sign out/i);
+    expect(signOutLink).toBeInTheDocument();
+    
+    await fireEvent.click(signOutLink);
+    expect(dispatchSpy).toHaveBeenCalled();
+
+    const signOutAction = signOutStart();
+    expect(dispatchSpy).toHaveBeenCalledWith(signOutAction);
   });
 });

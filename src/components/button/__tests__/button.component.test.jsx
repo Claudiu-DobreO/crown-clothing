@@ -6,21 +6,21 @@ describe('Button component', () => {
     render(<Button />);
 
     const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveStyle('background-color: rgb(0, 0, 0)');
+    expect(buttonElement).toHaveStyle({ 'background-color': 'black' });
   });
 
   it('should render google button when buttonType is google', () => {
     render(<Button buttonType={BUTTON_TYPES_CLASSES.google} />);
 
     const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveStyle('background-color: rgb(66, 133, 244)');
+    expect(buttonElement).toHaveStyle({ 'background-color': '#4285f4' });
   });
 
   it('should render inverted button when buttonType is inverted', () => {
     render(<Button buttonType={BUTTON_TYPES_CLASSES.inverted} />);
 
     const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveStyle('background-color: rgb(255, 255, 255)');
+    expect(buttonElement).toHaveStyle({ 'background-color': 'white' });
   });
 
   it('should be disabled when isLoading is true', () => {
